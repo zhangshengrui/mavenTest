@@ -27,7 +27,7 @@ public class SendElvesUtil {
 	private static String SYNC_AUTH_ID = "Z5UBNKHUFJ8VCW7V";
 	private static String SYNC_APP = "cloud";
 	private static String SYNC_AUTH_KEY = "DAV8NNXIGTAA2WYB";
-	private static String SYNC_INTERFACE_URL = "http://192.168.8.236:8081/";
+	private static String SYNC_INTERFACE_URL = "http://192.168.8.236:8082/";
 
 	/**
 	 * @Title: sendElvesOpenApi
@@ -66,7 +66,7 @@ public class SendElvesUtil {
 		}
 		sortUri.append(SYNC_AUTH_KEY);
 		//MD5
-		System.out.println("sortUri:"+sortUri);
+		//System.out.println("sortUri:"+sortUri);
 		String signFinal= MD5Utils.MD5(sortUri.toString());
 		//System.out.println("signFinal:"+signFinal);
 		paramsMap.put("sign_type","MD5");
