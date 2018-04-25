@@ -1,6 +1,5 @@
 package SendOperation;
 
-import cn.gy4j.frame.utils.JSONUtils;
 import cn.gy4j.frame.utils.MD5Utils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -27,7 +26,8 @@ public class SendElvesUtil {
 	private static String SYNC_AUTH_ID = "Z5UBNKHUFJ8VCW7V";
 	private static String SYNC_APP = "cloud";
 	private static String SYNC_AUTH_KEY = "DAV8NNXIGTAA2WYB";
-	private static String SYNC_INTERFACE_URL = "http://192.168.8.236:8082/";
+	//private static String SYNC_INTERFACE_URL = "http://10.12.53.59:8203/";
+	private static String SYNC_INTERFACE_URL = "http://192.168.8.236:8203/";
 
 	/**
 	 * @Title: sendElvesOpenApi

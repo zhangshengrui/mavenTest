@@ -79,8 +79,8 @@ public class SendElvesUtil {
 		paramsMap.put("sign_type","MD5");
 		paramsMap.put("sign",signFinal);
 		//封装参数，post 发送
-		String result=sendGet(SYNC_INTERFACE_URL+interfaceUri,paramsMap);
-		//System.out.println("result:"+result);
+		String result=sendPost(SYNC_INTERFACE_URL+interfaceUri,paramsMap);
+		System.out.println("result:"+result);
 		return result;
 	}
 	

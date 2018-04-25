@@ -14,7 +14,8 @@ import java.util.Map;
 public class Test {
     private static String SYNC_CREATERT_URI="/api/v2/rt/exec";
     private static String SYNC_QUEUE_RESULT="/api/v2/queue/result";
-    private static String checkip="10.12.51.12";
+    //private static String checkip="10.12.51.12";
+    private static String checkip="115.182.1.41";
     public static void main(String[] args) {
         test1();
     }
@@ -24,7 +25,7 @@ public class Test {
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_MONTH, -1);
         String start_time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(calendar.getTime());
-        map.put("start_time", "2018-03-20 00:00:00");
+        map.put("start_time", "2018-04-23 00:00:00");
         //System.out.println(start_time);
         String url = SYNC_CREATERT_URI;
         Map<String, String> paramsMap = new HashMap<String, String>();
