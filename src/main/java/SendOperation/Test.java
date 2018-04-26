@@ -11,6 +11,7 @@ public class Test {
     private static String SYNC_CREATERT_URI="createVirtualMachine";
     private static String SYNC_CREATERT_URI2="updateVirtualMachine";
     private static String SYNC_CREATERT_URI3="deleteVirtualMachine";
+    private static String SYNC_CREATERT_URI4="queryVirtualIdByGysn";
     public static void main(String[] args) {
         test1();
     }
@@ -18,7 +19,7 @@ public class Test {
         Map<String, String> paramsMap = new HashMap<String, String>();
         paramsMap.put("ip","192.168.8.236");
         paramsMap.put("name","test");
-        paramsMap.put("gysn","AM1012");
+        paramsMap.put("gysn","GYS1592");
         paramsMap.put("idc_id","90");
         paramsMap.put("os","CentOS5.3");
         paramsMap.put("flag","1");
@@ -35,17 +36,19 @@ public class Test {
         }catch (java.io.UnsupportedEncodingException e){
             e.printStackTrace();
         }
-        //String url = SYNC_CREATERT_URI;
         Map<String, String> map = new HashMap();
         map.put("param", JSON.toJSONString(paramsMap));
+
+        //String url = SYNC_CREATERT_URI;
         //String resultMessage = SendElvesUtil.sendElvesOpenApi(map, url);
 
-        String url = SYNC_CREATERT_URI2;
-        String resultMessage = SendElvesUtil.sendElvesOpenApi(map, url);
-        //System.out.println(resultMessage);
+        //String url = SYNC_CREATERT_URI2;
+        //String resultMessage = SendElvesUtil.sendElvesOpenApi(map, url);
 
         //String url = SYNC_CREATERT_URI3;
         //String resultMessage = SendElvesUtil.sendElvesOpenApi(map, url);
-        //System.out.println(resultMessage);
+
+        String url = SYNC_CREATERT_URI4;
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(map, url);
     }
 }
