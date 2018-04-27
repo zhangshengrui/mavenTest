@@ -27,7 +27,8 @@ public class SendElvesUtil {
 	private static String SYNC_APP = "cloud";
 	private static String SYNC_AUTH_KEY = "DAV8NNXIGTAA2WYB";
 	//private static String SYNC_INTERFACE_URL = "http://10.12.53.59:8203/";
-	private static String SYNC_INTERFACE_URL = "http://192.168.8.236:8203/";
+	//private static String SYNC_INTERFACE_URL = "http://192.168.8.236:8203/";
+	private static String SYNC_INTERFACE_URL = "http://center-app-api.test.gyyx.cn/";
 
 	/**
 	 * @Title: sendElvesOpenApi
