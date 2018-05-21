@@ -22,21 +22,57 @@ import java.util.Map.Entry;
  *
  */
 public class SendElvesUtil {
-	
 
-	private static String SYNC_AUTH_ID = "AAB4D95DA15F7E86";
-	private static String SYNC_APP = "webops";
-	private static String SYNC_AUTH_KEY = "40A2F680F77F988E";
+	//private static String SYNC_AUTH_ID = "AAB4D95DA15F7E86";
+	//private static String SYNC_APP = "webops";
+	//private static String SYNC_AUTH_KEY = "40A2F680F77F988E";
+
+	private static String SYNC_AUTH_ID = "1BC23436ADCB4F0C";
+	private static String SYNC_APP = "leader";
+	private static String SYNC_AUTH_KEY = "FD4E8AB10130C651";
+
 	private static String SYNC_INTERFACE_URL = "http://api.elves.gyyx.cn";
 
-	/**
+    public static String getSyncAuthId() {
+        return SYNC_AUTH_ID;
+    }
+
+    public static void setSyncAuthId(String syncAuthId) {
+        SYNC_AUTH_ID = syncAuthId;
+    }
+
+    public static String getSyncApp() {
+        return SYNC_APP;
+    }
+
+    public static void setSyncApp(String syncApp) {
+        SYNC_APP = syncApp;
+    }
+
+    public static String getSyncAuthKey() {
+        return SYNC_AUTH_KEY;
+    }
+
+    public static void setSyncAuthKey(String syncAuthKey) {
+        SYNC_AUTH_KEY = syncAuthKey;
+    }
+
+    public static String getSyncInterfaceUrl() {
+        return SYNC_INTERFACE_URL;
+    }
+
+    public static void setSyncInterfaceUrl(String syncInterfaceUrl) {
+        SYNC_INTERFACE_URL = syncInterfaceUrl;
+    }
+
+    /**
 	 * @Title: sendElvesOpenApi
 	 * @Description: 调用Elves-openapi接口
 	 * @param paramsMap
-	 * @param interfaceUri
 	 * @return String    返回类型
 	 */
-	public static String sendElvesOpenApi(Map<String, String> paramsMap,String interfaceUri){
+	public static String sendElvesOpenApi(Map<String, String> paramsMap,SendElvesEnum sendElvesEnum){
+	    String interfaceUri = sendElvesEnum.toString();
 		//添加必传参数 auth_id 、timestamp
 		if(null==paramsMap){
 			paramsMap=new HashMap<String, String>();
@@ -52,7 +88,7 @@ public class SendElvesUtil {
 		//可选参数
 		paramsMap.put("timeout","300");
 		
-		//System.out.println("param map :"+paramsMap.toString());
+		////System.out.println("param map :"+paramsMap.toString());
 		//制作签名
 		StringBuffer sortUri=new StringBuffer(interfaceUri);
 		if(paramsMap.size()>0){
@@ -80,7 +116,7 @@ public class SendElvesUtil {
 		paramsMap.put("sign",signFinal);
 		//封装参数，post 发送
 		String result=sendPost(SYNC_INTERFACE_URL+interfaceUri,paramsMap);
-		System.out.println("result:"+result);
+		//System.out.println("result:"+result);
 		return result;
 	}
 	
@@ -124,14 +160,14 @@ public class SendElvesUtil {
 		
 		sortUri.append(SYNC_AUTH_KEY);
 		//MD5
-		//System.out.println("sortUri:"+sortUri);
+		////System.out.println("sortUri:"+sortUri);
 		String signFinal=MD5Utils.MD5(sortUri.toString());
-		//System.out.println("signFinal:"+signFinal);
+		////System.out.println("signFinal:"+signFinal);
 		paramsMap.put("sign_type","MD5");
 		paramsMap.put("sign",signFinal);
 		//封装参数，post 发送
 		String result=sendGet(SYNC_INTERFACE_URL+interfaceUri,paramsMap);
-		//System.out.println("result:"+result);
+		////System.out.println("result:"+result);
 		return result;
 	}
 	
@@ -151,7 +187,7 @@ public class SendElvesUtil {
 		}
 		paramsMap.put("auth_id", SYNC_AUTH_ID);
 		paramsMap.put("timestamp", (System.currentTimeMillis()/1000)+"");
-		//System.out.println("param map :"+paramsMap.toString());
+		////System.out.println("param map :"+paramsMap.toString());
 		/**
 		 * 制作签名
 		 */
@@ -174,20 +210,20 @@ public class SendElvesUtil {
 		
 		sortUri.append(SYNC_AUTH_KEY);
 		//MD5
-		//System.out.println("sortUri:"+sortUri);
+		////System.out.println("sortUri:"+sortUri);
 		String signFinal=MD5Utils.MD5(sortUri.toString());
-		//System.out.println("signFinal:"+signFinal);
+		////System.out.println("signFinal:"+signFinal);
 		paramsMap.put("sign_type","MD5");
 		paramsMap.put("sign",signFinal);
 		//封装参数，post 发送
 		String result=sendPost(SYNC_INTERFACE_URL+interfaceUri,paramsMap);
-		//System.out.println("result:"+result);
+		////System.out.println("result:"+result);
 		if(StringUtils.isNotBlank(result) && !"error".equals(result)){
 			try {
 				T rsMap = JSONUtils.parseObject(result,clazz);
 				return rsMap;
 			} catch (Exception e) {
-				System.out.println(e);
+				//System.out.println(e);
             }
 		}
 		return null;
@@ -231,7 +267,7 @@ public class SendElvesUtil {
             conn.setDoInput(true);
             // 获取URLConnection对象对应的输出流
             out = new PrintWriter(new OutputStreamWriter(conn.getOutputStream(),"UTF-8"));
-            //System.out.println("write :"+DateUtils.currentTimestamp2String("yyyy-MM-dd HH:mm:ss SS"));
+            ////System.out.println("write :"+DateUtils.currentTimestamp2String("yyyy-MM-dd HH:mm:ss SS"));
             // 发送请求参数
             out.print(sb.toString());
             // flush输出流的缓冲
@@ -243,11 +279,11 @@ public class SendElvesUtil {
             while ((line = in.readLine()) != null) {
                 result += line;
             }
-            //System.out.println("write :"+DateUtils.currentTimestamp2String("yyyy-MM-dd HH:mm:ss SS"));
-            //System.out.println(result);
+            ////System.out.println("write :"+DateUtils.currentTimestamp2String("yyyy-MM-dd HH:mm:ss SS"));
+            ////System.out.println(result);
             //result= new String(result.getBytes("GBK"),"UTF-8");
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
         }finally {
 			if (conn != null) {
 				conn.disconnect();
@@ -273,7 +309,7 @@ public class SendElvesUtil {
         BufferedReader in = null;
         try {
             String urlNameString = url + "?" + sb.toString();
-            System.out.println(urlNameString);
+            //System.out.println(urlNameString);
             URL realUrl = new URL(urlNameString);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
@@ -288,7 +324,7 @@ public class SendElvesUtil {
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段
             for (String key : map.keySet()) {
-                System.out.println(key + "--->" + map.get(key));
+                //System.out.println(key + "--->" + map.get(key));
             }
             // 定义 BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(
@@ -299,7 +335,7 @@ public class SendElvesUtil {
             }
             //result= new String(result.getBytes("GBK"),"UTF-8");
         } catch (Exception e) {
-        	 System.out.println(e);
+        	 //System.out.println(e);
         }
         // 使用finally块来关闭输入流
         finally {
@@ -308,7 +344,7 @@ public class SendElvesUtil {
                     in.close();
                 }
             } catch (Exception e2) {
-                System.out.println(e2);
+                //System.out.println(e2);
             }
         }
         return result;
