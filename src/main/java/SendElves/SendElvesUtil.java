@@ -1,5 +1,6 @@
 package SendElves;
 
+import cn.gy4j.frame.utils.DateUtils;
 import cn.gy4j.frame.utils.JSONUtils;
 import cn.gy4j.frame.utils.MD5Utils;
 import org.apache.commons.lang3.StringUtils;
@@ -71,8 +72,7 @@ public class SendElvesUtil {
 	 * @param paramsMap
 	 * @return String    返回类型
 	 */
-	public static String sendElvesOpenApi(Map<String, String> paramsMap,SendElvesEnum sendElvesEnum){
-	    String interfaceUri = sendElvesEnum.toString();
+	public static String sendElvesOpenApi(Map<String, String> paramsMap,String interfaceUri){
 		//添加必传参数 auth_id 、timestamp
 		if(null==paramsMap){
 			paramsMap=new HashMap<String, String>();
@@ -88,7 +88,7 @@ public class SendElvesUtil {
 		//可选参数
 		paramsMap.put("timeout","300");
 		
-		////System.out.println("param map :"+paramsMap.toString());
+		//System.out.println("param map :"+paramsMap.toString());
 		//制作签名
 		StringBuffer sortUri=new StringBuffer(interfaceUri);
 		if(paramsMap.size()>0){
@@ -223,7 +223,7 @@ public class SendElvesUtil {
 				T rsMap = JSONUtils.parseObject(result,clazz);
 				return rsMap;
 			} catch (Exception e) {
-				//System.out.println(e);
+				System.out.println(e);
             }
 		}
 		return null;
@@ -279,11 +279,11 @@ public class SendElvesUtil {
             while ((line = in.readLine()) != null) {
                 result += line;
             }
-            ////System.out.println("write :"+DateUtils.currentTimestamp2String("yyyy-MM-dd HH:mm:ss SS"));
-            ////System.out.println(result);
+            //System.out.println("write :"+ DateUtils.currentTimestamp2String("yyyy-MM-dd HH:mm:ss SS"));
+            //System.out.println(result);
             //result= new String(result.getBytes("GBK"),"UTF-8");
         } catch (Exception e) {
-            //System.out.println(e);
+            System.out.println(e);
         }finally {
 			if (conn != null) {
 				conn.disconnect();
@@ -335,7 +335,7 @@ public class SendElvesUtil {
             }
             //result= new String(result.getBytes("GBK"),"UTF-8");
         } catch (Exception e) {
-        	 //System.out.println(e);
+        	 System.out.println(e);
         }
         // 使用finally块来关闭输入流
         finally {
@@ -344,7 +344,7 @@ public class SendElvesUtil {
                     in.close();
                 }
             } catch (Exception e2) {
-                //System.out.println(e2);
+                System.out.println(e2);
             }
         }
         return result;

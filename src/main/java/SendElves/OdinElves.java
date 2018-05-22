@@ -2,9 +2,6 @@ package SendElves;
 
 import com.alibaba.fastjson.JSON;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +18,6 @@ public class OdinElves {
         SendElvesUtil.setSyncAuthId(SYNC_AUTH_ID);
         SendElvesUtil.setSyncAuthKey(SYNC_AUTH_KEY);
         test1();
-
     }
 
     public static void test1(){
@@ -34,7 +30,8 @@ public class OdinElves {
         //Map<String, String> map = new HashMap<String, String>();
         //paramsMap.put("param", JSON.toJSONString(map));
 
-        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.SYNC_CREATERT_URI);
-        System.out.println(resultMessage.toString());
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
+        System.out.println(resultMessage);
     }
+
 }

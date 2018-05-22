@@ -9,8 +9,12 @@ public enum SendElvesEnum {
      ELVES_RESULT_URI("/api/v2/queue/result"),
      ELVES_CREATEQKSQUEUE_URI("/api/v2/queue/qksqueue");
 
-    private String value;
-    SendElvesEnum(String value){
-        this.value = value;
+    private String uri;
+    SendElvesEnum(String uri){
+        this.uri = uri;
+    }
+
+    public String getUri(){
+        return uri;
     }
 }

@@ -62,7 +62,7 @@ public class Test {
         //paramsMap.put("func", "getpsInfo");
         paramsMap.put("param", JSON.toJSONString(map));
         paramsMap.put("proxy","python|app-worker.py");
-        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.SYNC_CREATERT_URI);
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
         System.out.println(resultMessage.toString());
     }
 
@@ -73,7 +73,7 @@ public class Test {
         String authId = "AAB4D95DA15F7E86";
         paramsMap.put("queue_id", queueId);
         paramsMap.put("auth_id", authId);
-        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.SYNC_QUEUE_RESULT);
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_QUEUE_RESULT").getUri());
         Map<String, Object> rsMap = JSONUtils.parseObject(resultMessage, new HashMap<String, Object>().getClass());
         Map<String, Object> rsMap2= JSONUtils.parseObject(rsMap.get("result").toString(), new HashMap<String, Object>().getClass());
         Map<String, Object> rsMap3= JSONUtils.parseObject(rsMap2.get("935DABF6FEF1A7D6").toString(), new HashMap<String, Object>().getClass());
@@ -115,7 +115,7 @@ public class Test {
 
 
         // 调用接口，发送数据到
-        String result= SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.SYNC_CREATERT_URI);
+        String result= SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
         Map<String,JSONObject> map = JSON.parseObject(result,new HashMap().getClass());
         String message = map.get("result").get("worker_message").toString();
         Map<String,String> map2 = JSON.parseObject(message,new HashMap().getClass());
@@ -139,7 +139,8 @@ public class Test {
 
         // 调用接口，发送数据到
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        String result= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.SYNC_CREATERT_URI);
+        String result= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
+        System.out.println(result);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         //Map<String,JSONObject> map = JSON.parseObject(result,new HashMap().getClass());
         //String message = map.get("result").get("worker_message").toString();
@@ -154,7 +155,7 @@ public class Test {
 
     public static void test6(){//创建队列任务// 调用接口，发送数据到
 
-        String message= SendElvesUtil.sendElvesOpenApi(null,SendElvesEnum.SYNC_CREATEQUEUE_URI );
+        String message= SendElvesUtil.sendElvesOpenApi(null,SendElvesEnum.valueOf("SYNC_CREATEQUEUE_URI").getUri() );
         String queueId="";
         if(StringUtils.isNotBlank(message)){
             Map<String,String> map = JSON.parseObject(message,new HashMap().getClass());
@@ -171,19 +172,19 @@ public class Test {
         Map<String, String> map = new HashMap<>();
         map.put("newtime","2018-01-01 15:00:00");
         paramsMap.put("param",JSON.toJSONString(map));
-        message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.SYNC_ADDTASK_URI );
+        message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.valueOf("SYNC_ADDTASK_URI").getUri() );
 
         System.out.println(queueId);
 
         paramsMap = new HashMap<>();
         paramsMap.put("queue_id",queueId);
-        message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.ELVES_COMMIT_URI);
+        message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.valueOf("ELVES_COMMIT_URI").getUri());
         System.out.println(message);
 
 
         paramsMap = new HashMap<>();
         paramsMap.put("queue_id",queueId);
-        message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.ELVES_RESULT_URI);
+        message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.valueOf("ELVES_RESULT_URI").getUri());
         System.out.println(message);
 
 
@@ -193,7 +194,7 @@ public class Test {
         String taskId="D49E4200A0B3BD67";
         Map<String,String> paramsMap = new HashMap<>();
         paramsMap.put("queue_id",queueId);
-        String message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.ELVES_RESULT_URI);
+        String message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.valueOf("ELVES_RESULT_URI").getUri());
         System.out.println(message);
         Map<String,String> map = JSON.parseObject(message,new HashMap().getClass());
         if(StringUtils.isNotBlank(map.get("flag").toString()) && map.get("flag").toString().equals("true")){
@@ -216,7 +217,7 @@ public class Test {
         Map<String, String> map = new HashMap<>();
         map.put("newtime","2018-01-01 15:00:00");
         paramsMap.put("param",JSON.toJSONString(map));
-        String message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.ELVES_CREATEQKSQUEUE_URI );
+        String message= SendElvesUtil.sendElvesOpenApi(paramsMap,SendElvesEnum.valueOf("ELVES_CREATEQKSQUEUE_URI").getUri() );
         if(StringUtils.isNotBlank(message)){
             map = JSON.parseObject(message,new HashMap().getClass());
             if(map.get("flag") != null && "true".equals(map.get("flag"))){

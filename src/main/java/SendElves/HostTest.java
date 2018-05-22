@@ -24,7 +24,7 @@ public class HostTest {
         //paramsMap.put("func", "getpsInfo");
         paramsMap.put("param", paramStr);
         paramsMap.put("mode","np");
-        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.SYNC_CREATERT_URI);
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
         System.out.println(resultMessage.toString());
     }
 }
