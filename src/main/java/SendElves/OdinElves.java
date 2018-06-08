@@ -22,16 +22,6 @@ public class OdinElves {
 
     public static void test1(){
 
-        Map<String, String> paramsMap = new HashMap<String, String>();
-        paramsMap.put("ip", checkip);
-        paramsMap.put("func", "getstartupinfo");
-        paramsMap.put("proxy","python|app-worker.py");
-
-        //Map<String, String> map = new HashMap<String, String>();
-        //paramsMap.put("param", JSON.toJSONString(map));
-
-        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
-        System.out.println(resultMessage);
     }
 
 }

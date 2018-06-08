@@ -9,7 +9,7 @@ public class TimerTest {
 
 
     public static void main(String[] args) {
-        Timer timer = new Timer("test");
+        Timer timer = new Timer("Test");
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -24,7 +24,7 @@ public class TimerTest {
             @Override
             public void run() {
                 System.out.println("time is cancel");
-                new Timer("test").cancel();
+                new Timer("Test").cancel();
             }
         },10000 , 20000);
 

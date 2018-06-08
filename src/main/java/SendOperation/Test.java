@@ -19,7 +19,7 @@ public class Test {
     public static void test1(){
         Map<String, String> paramsMap = new HashMap<String, String>();
         //paramsMap.put("ip","192.168.8.236");
-        //paramsMap.put("name","test");
+        //paramsMap.put("name","Test");
         paramsMap.put("gysn","GYS1592");
         //paramsMap.put("idc_id","90");
         //paramsMap.put("os","CentOS5.3");
