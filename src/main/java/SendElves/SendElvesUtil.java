@@ -106,7 +106,7 @@ public class SendElvesUtil {
 				sortUri.deleteCharAt(sortUri.length()-1);
 			}
 		}
-		
+
 		sortUri.append(SYNC_AUTH_KEY);
 		//MD5
 		//System.out.println("sortUri:"+sortUri);
@@ -119,7 +119,7 @@ public class SendElvesUtil {
 		//System.out.println("result:"+result);
 		return result;
 	}
-	
+
 	/**
 	 * @Title: sendElvesOpenApi
 	 * @Description: 调用Elves-openapi接口
@@ -157,7 +157,7 @@ public class SendElvesUtil {
 				sortUri.deleteCharAt(sortUri.length()-1);
 			}
 		}
-		
+
 		sortUri.append(SYNC_AUTH_KEY);
 		//MD5
 		////System.out.println("sortUri:"+sortUri);
@@ -170,8 +170,8 @@ public class SendElvesUtil {
 		////System.out.println("result:"+result);
 		return result;
 	}
-	
-	
+
+
 	/**
 	 * @Title: sendElvesOpenApi2
 	 * @Description: 调用Elves-openapi接口
@@ -207,7 +207,7 @@ public class SendElvesUtil {
 				sortUri.deleteCharAt(sortUri.length()-1);
 			}
 		}
-		
+
 		sortUri.append(SYNC_AUTH_KEY);
 		//MD5
 		////System.out.println("sortUri:"+sortUri);
@@ -228,8 +228,8 @@ public class SendElvesUtil {
 		}
 		return null;
 	}
-	
-	
+
+
 	/**
 	 * @Title: sendPost
 	 * @Description: 发起POST请求
@@ -304,7 +304,7 @@ public class SendElvesUtil {
 			}
 			sb.substring(0, sb.length() - 1);
 		}
-		
+
         String result = "";
         BufferedReader in = null;
         try {

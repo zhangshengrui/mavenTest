@@ -16,7 +16,9 @@ public class SendCloud {
         SendElvesUtil.setSyncApp(SYNC_APP);
         SendElvesUtil.setSyncAuthId(SYNC_AUTH_ID);
         SendElvesUtil.setSyncAuthKey(SYNC_AUTH_KEY);
-        test1();
+        //test2();
+        //test3();
+        test4( );
     }
     public static void test1(){
         String ip = "42.62.121.103";
@@ -35,5 +37,42 @@ public class SendCloud {
 
         //JSONObject jsonObject = JSON.parseObject(result);
         //jsonObject = JSON.parseObject(jsonObject.get("result").toString());
+    }
+
+    public static void test2(){
+        Map<String, String> paramsMap = new HashMap<String, String>();
+        paramsMap.put("ip", "115.182.1.210");
+        paramsMap.put("func", "list_ipset");
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
+        //System.out.println(resultMessage.toString());
+        JSONObject jsonObject = JSON.parseObject(resultMessage);
+        jsonObject = JSON.parseObject(jsonObject.get("result").toString());
+        jsonObject = JSON.parseObject(jsonObject.get("worker_message").toString());
+        //jsonObject = JSON.parseObject(jsonObject.get("msg").toString());
+        System.out.println(jsonObject.toString());
+    }
+    public static void test3(){
+        Map<String, String> paramsMap = new HashMap<String, String>();
+        paramsMap.put("ip", "115.182.1.210");
+        paramsMap.put("func", "list_iptables");
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
+        //System.out.println(resultMessage.toString());
+        JSONObject jsonObject = JSON.parseObject(resultMessage);
+        jsonObject = JSON.parseObject(jsonObject.get("result").toString());
+        jsonObject = JSON.parseObject(jsonObject.get("worker_message").toString());
+        //jsonObject = JSON.parseObject(jsonObject.get("msg").toString());
+        System.out.println(jsonObject.toString());
+    }
+    public static void test4(){
+        Map<String, String> paramsMap = new HashMap<String, String>();
+        paramsMap.put("ip", "115.182.1.210");
+        paramsMap.put("func", "list_ipset_element");
+        String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
+        //System.out.println(resultMessage.toString());
+        JSONObject jsonObject = JSON.parseObject(resultMessage);
+        jsonObject = JSON.parseObject(jsonObject.get("result").toString());
+        jsonObject = JSON.parseObject(jsonObject.get("worker_message").toString());
+        //jsonObject = JSON.parseObject(jsonObject.get("msg").toString());
+        System.out.println(jsonObject.toString());
     }
 }
