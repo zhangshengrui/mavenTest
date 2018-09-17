@@ -1,6 +1,8 @@
 package SendElves;
 
 
+import cn.gy4j.frame.utils.MD5Utils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +13,8 @@ public class HostTest {
     private static String checkip="10.15.10.122";
     private static String agentIp="192.168.4.150";
     public static void main(String[] args) {
-        test1();
+        //test1();
+        test2();
     }
     public static void test1(){
         //获取当前host
@@ -26,5 +29,12 @@ public class HostTest {
         paramsMap.put("mode","np");
         String resultMessage = SendElvesUtil.sendElvesOpenApi(paramsMap, SendElvesEnum.valueOf("SYNC_CREATERT_URI").getUri());
         System.out.println(resultMessage.toString());
+    }
+
+    public static void test2(){
+        String url ="http://web-automation.gyyx.cn/data/host?busId=2_5_59";
+        String result = SendElvesUtil.sendPost(url,null);
+        System.out.println(result);
+        System.out.println(MD5Utils.MD5(result));
     }
 }
